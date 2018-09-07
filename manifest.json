@@ -1,0 +1,49 @@
+{
+
+  "manifest_version": 2,
+  "name": "Haley - Alias Manager",
+  "version": "0.1",
+
+  "description": "A manager for your online identities that allows you to login easily by autofilling forms.",
+
+  // "icons": {
+  //   "48": "icons/border-48.png"
+  // },
+
+  "applications": {
+    "gecko": {
+      "id": "haley_alias_manager@gmail.com"
+    }
+  },
+  
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": [
+        "*://*/*.xml",
+        "file:///*/*.xml"
+      ],
+      "js": ["jquery-3.2.1.min.js", "chance-0.7.0.min.js", "input-type.js", "input-identifier.js", "form-filler.js", "com-interface.js"]
+    }
+  ],
+
+
+  "permissions": [
+    "nativeMessaging",
+    "activeTab"
+  ],
+
+  "commands": {
+    "fill-forms": {
+      "suggested_key": {
+        "default": "Alt+Shift+U"
+      },
+      "description": "Fills all the forms in the current page."
+    }
+  }
+
+}
